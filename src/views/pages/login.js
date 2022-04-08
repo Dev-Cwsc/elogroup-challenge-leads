@@ -14,7 +14,7 @@ function Login() {
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
           <form className="login-form">
-            <span className="login-form-title"> Sistema de manutenção de leads </span>
+            <span className="login-form-title"> Sistema de Manutenção de Leads </span>
             <div className="wrap-input">
               <input
                 className={login !== "" ? "has-val input" : "input"}
@@ -40,9 +40,9 @@ function Login() {
             </div>
 
             <div className="text-center">
-              <span className="txt1">Não possui conta? </span>
+              <span className="txt1">Não possui cadastro? </span>
               <a className="txt2" href="/newUser">
-                Criar conta
+                Cadastrar
               </a>
             </div>
           </form>
