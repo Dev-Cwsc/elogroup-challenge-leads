@@ -4,8 +4,7 @@
     box-sizing: border-box;
 }
 
-body,
-html {
+body, html {
     font-family: Nunito, sans-serif;
 }
 
@@ -22,16 +21,14 @@ html {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    background-color: #111;
+    background-color: whitesmoke;
 }
 
 .wrap-login {
     width: 390px;
-    background-color: #333;
-    border-radius: 10px;
+    background-color: #272727;
     overflow: hidden;
     padding: 77px 55px 33px 55px;
-    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .login-form {
@@ -39,16 +36,13 @@ html {
 }
 
 .login-form-title {
-    font-family: Nunito, sans-serif;
+    font-family: "PP Telegraf Regular", Sans-serif;
     display: block;
-    font-size: 30px;
+    font-size: 18px;
     color: azure;
     line-height: 1.2;
     text-align: center;
-}
-
-.login-form-title img {
-    width: 90px;
+    padding-bottom: 30px;
 }
 
 .wrap-input {
@@ -163,6 +157,7 @@ html {
 
 .form-btn:hover {
     cursor: pointer;
+    background: #13199b;
 }
 
 .text-center {
@@ -184,4 +179,14 @@ html {
     color: #2f38d4;
     line-height: 1.5;
     text-decoration: none;
+}
+
+.header-form-img{
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.img-elogroup{
+    width: 100%;
+    height: 100%;
 }
