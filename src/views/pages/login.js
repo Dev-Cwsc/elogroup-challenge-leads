@@ -3,25 +3,24 @@ import "./css/styles.css";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <div className="container">
       <div className="container-login">
         <div className="wrap-login">
+          <div className="header-form-img">
+            <img src={egIMG} className="img-elogroup" alt="EloGroup" />
+          </div>
           <form className="login-form">
-            <span className="login-form-title"> Bem vindo </span>
-            <img src={egIMG} alt="EloGroup" />
-            <span className="login-form-title">
-            </span>
-
+            <span className="login-form-title"> Sistema de manutenção de leads </span>
             <div className="wrap-input">
               <input
-                className={email !== "" ? "has-val input" : "input"}
+                className={login !== "" ? "has-val input" : "input"}
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
               />
               <span className="focus-input" data-placeholder="Login"></span>
             </div>
