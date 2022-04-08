@@ -1,11 +1,11 @@
 import React from "react";
 
 function Leads() {
-    return (
-      <>
-        <h1>Aqui será a página de leads management</h1>
-      </>
-    );
-  }
-  
+  return (
+    <div>
+      <h1> Aqui será a página de manutenção de leads </h1>
+    </div>
+  );
+}
+
 export default Leads;
