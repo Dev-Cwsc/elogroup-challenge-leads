@@ -1,11 +1,11 @@
 import React from "react";
 
 function NewUser() {
-    return (
-      <>
-        <h1>Aqui será a página de registro de usuário</h1>
-      </>
-    );
-  }
-  
+  return (
+    <div>
+      <h1> Aqui será a página de registro de usuário </h1>
+    </div>
+  );
+}
+
 export default NewUser;
