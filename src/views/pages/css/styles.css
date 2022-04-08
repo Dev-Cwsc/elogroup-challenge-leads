@@ -42,7 +42,7 @@ body, html {
     color: azure;
     line-height: 1.2;
     text-align: center;
-    padding-bottom: 30px;
+    margin-bottom: 37px;
 }
 
 .wrap-input {
@@ -183,7 +183,7 @@ body, html {
 
 .header-form-img{
     width: 100%;
-    padding-bottom: 30px;
+    margin-bottom: 37px;
 }
 
 .img-elogroup{
