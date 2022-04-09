@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import Login from '../views/pages/Login'; 
+import Login from '../views/pages/Login';
 
 const isAuth = () => { // Retorna o estado de autenticação
     return false;
