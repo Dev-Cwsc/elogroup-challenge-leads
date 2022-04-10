@@ -46,6 +46,10 @@ class StorageManager {
     static clearAuthenticationSS () {
         sessionStorage.clear(); // Limpa o sessionStorage
     }
+
+    static getLoggedUser () {
+        return JSON.parse(sessionStorage.getItem("authenticated")); // Retorna o login do usuário autenticado
+    }
 }
 
 export default StorageManager;
