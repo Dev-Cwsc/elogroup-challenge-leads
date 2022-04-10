@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Authentication from "./controller/Authentication";
+import AuthenticationCheck from "./controller/AuthenticationController";
 
 import Login from "./views/pages/Login"
 import NewUser from "./views/pages/NewUser"
@@ -12,7 +12,7 @@ const AppRoutes = () => { // Stateless component pode ser definido como uma cons
       <Routes> {/* A partir da versão 6 do react router não é mais necessário usar o componente "Switch" para garantir que apenas uma página seja renderizada por vez */}
         <Route path="/" element={<Login />} /> {/* "/" é o caminho padrão, ou seja, a página de login será renderizada quando acessar a URL "/" */}
         <Route path="/newUser" element={<NewUser />} /> {/* "/newUser" é o caminho para a página de cadastro de novo usuário */}
-        <Route element={<Authentication />}> {/* Os componentes "Leads" e "NewLead" só serão renderizados se o usuário estiver autenticado */}
+        <Route element={<AuthenticationCheck />}> {/* Os componentes "Leads" e "NewLead" só serão renderizados se o usuário estiver autenticado */}
           <Route path="/leads" element={<Leads />} />
           <Route path="/newLead" element={<NewLead />} />
         </Route>
