@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./css/styles.css";
+import StorageManager from "../../services/StorageManager";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
@@ -8,21 +9,13 @@ function Login() {
   const [cnfPassword, setCnfPassword] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    let users = [];
-    let passwords = [];
+    e.preventDefault(); // Evita que a página seja recarregada
     if (password !== cnfPassword) {
       alert("Senhas não conferem");
       return;
     }
-    if(localStorage.getItem("users") && localStorage.getItem("passwords")){
-      users = JSON.parse(localStorage.getItem("users")); // JSON.parse interpreta o JSON e transforma em objeto
-      passwords = JSON.parse(localStorage.getItem("passwords"));
-    }
-    users.push(login);
-    passwords.push(password);
-    localStorage.setItem("users", JSON.stringify(users)); // JSON.stringfy converte objeto em string
-    localStorage.setItem("passwords", JSON.stringify(passwords));
+    StorageManager.storeLS("login", login); // Armazena o login no localStorage
+    StorageManager.storeLS("password", password); // Armazena a senha no localStorage
     alert('Usuário e senha cadastrados com sucesso!');
     setLogin("");
     setPassword("");
