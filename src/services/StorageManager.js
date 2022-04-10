@@ -42,6 +42,10 @@ class StorageManager {
     static getAuthenticationSS () {
         return JSON.parse(sessionStorage.getItem("authenticated")) ? true : false; // Retorna true se houver um usuário estiver autenticado no momento, false caso contrário
     }
+
+    static clearAuthenticationSS () {
+        sessionStorage.clear();
+    }
 }
 
 export default StorageManager;
