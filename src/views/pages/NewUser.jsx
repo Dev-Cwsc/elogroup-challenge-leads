@@ -4,22 +4,27 @@ import StorageManager from "../../services/StorageManager";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
-  const [login, setLogin] = useState("");
+  const [login, setLogin] = useState(""); 
   const [password, setPassword] = useState("");
   const [cnfPassword, setCnfPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que a página seja recarregada
-    if (password !== cnfPassword) {
-      alert("Senhas não conferem");
+    if (password !== cnfPassword) { // Verifica se as senhas são iguais
+      alert("Senhas não conferem.");
       return;
+    } else if (login === '' || password === '' || cnfPassword === '') { // Verifica se todos os campos estão preenchidos
+      alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
+      return;
+    } else if (StorageManager.storeLS("login", login) && StorageManager.storeLS("password", password)) { // Se o login e a senha foram armazenados no localStorage
+      alert('Usuário e senha cadastrados com sucesso!'); // Exibe uma mensagem de sucesso
+      setLogin(""); // Limpa os campos
+      setPassword("");
+      setCnfPassword("");
+      window.location.href = "/"; // Redireciona para a página principal
+    } else { // Se não conseguir fazer o cadastro corretamente exibe uma mensagem de erro
+      alert('Erro ao cadastrar usuário e senha');
     }
-    StorageManager.storeLS("login", login); // Armazena o login no localStorage
-    StorageManager.storeLS("password", password); // Armazena a senha no localStorage
-    alert('Usuário e senha cadastrados com sucesso!');
-    setLogin("");
-    setPassword("");
-    setCnfPassword("");
   }
 
   return (
