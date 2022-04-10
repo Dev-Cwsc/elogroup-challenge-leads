@@ -7,7 +7,7 @@ const isAuth = () => { // Retorna o estado de autenticação
 };
 
 const AuthenticationCheck = () => { // Verifica se o usuário está autenticado
-    return isAuth() ? <Outlet /> : <Login />; // Se estiver autenticado, retorna o componente principal, caso contrário, retorna o componente de login
+    return isAuth() ? <Outlet /> : <Login />; // Se estiver autenticado, retorna o componente solicitado, caso contrário, retorna o componente de login
 };
 
 export default AuthenticationCheck;
