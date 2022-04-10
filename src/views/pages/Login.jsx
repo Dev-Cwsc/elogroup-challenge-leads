@@ -2,13 +2,20 @@ import { useState } from "react";
 import "./css/styles.css";
 import egIMG from "./components/elogroup.png";
 
-function teste(){
-  alert('teste');
-}
-
 function Login() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
+  const handlerLogin = (e) => {
+    e.preventDefault();
+    if (login === localStorage.getItem('Login') && password === localStorage.getItem('Password')) {
+      alert("Login efetuado com sucesso!");
+      setLogin("");
+      setPassword("");
+    } else {
+      alert("Login ou senha incorretos!");
+    }
+  }
 
   return (
     <div className="container">
@@ -17,7 +24,7 @@ function Login() {
           <div className="header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
-          <form className="login-form" onSubmit={teste}>
+          <form className="login-form" onSubmit={handlerLogin}>
             <span className="login-form-title"> Sistema de Manutenção de Leads </span>
             <div className="wrap-input">
               <input
@@ -44,7 +51,7 @@ function Login() {
             </div>
 
             <div className="text-center">
-              <span className="txt1">Não possui cadastro? </span>
+              <span className="txt1"> Não possui cadastro? </span>
               <a className="txt2" href="/newUser">
                 Cadastrar
               </a>
