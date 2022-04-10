@@ -7,6 +7,20 @@ function Login() {
   const [password, setPassword] = useState("");
   const [cnfPassword, setCnfPassword] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== cnfPassword) {
+      alert("Senhas não conferem");
+      return;
+    }
+    localStorage.setItem("Login", JSON.stringify(login));
+    localStorage.setItem("Password", JSON.stringify(password));
+    alert('Usuário e senha cadastrados com sucesso!');
+    setLogin("");
+    setPassword("");
+    setCnfPassword("");
+  }
+
   return (
     <div className="container">
       <div className="container-login">
@@ -14,12 +28,12 @@ function Login() {
           <div className="header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleSubmit}>
             <span className="login-form-title"> Cadastro de novo Usuário </span>
             <div className="wrap-input">
               <input
                 className={login !== "" ? "has-val input" : "input"}
-                type="email"
+                type="text"
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
               />
