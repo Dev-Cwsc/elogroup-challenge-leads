@@ -3,7 +3,7 @@ import Login from '../views/pages/Login';
 import StorageManager from "../services/StorageManager";
 
 const isAuth = () => { // Retorna o estado de autenticação
-    return false;
+    return StorageManager.getAuthenticationSS();
 };
 
 const Authentication = () => { // Verifica se o usuário está autenticado
