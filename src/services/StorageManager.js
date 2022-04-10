@@ -1,7 +1,12 @@
 class StorageManager {
     static userExists (login){
-        const users = this.getDataLS("users");
+        const users = this.getDataLS("users"); // Retorna os usuários cadastrados no localStorage
         return users.find(object => object.login === login) ? true : false; // Retorna true se encontrar um usuário com o login especificado, false caso contrário
+    }
+
+    static getUserLS (login, password) {
+        const users = this.getDataLS("users");
+        return users.find(object => object.login === login && object.password === password); // Retorna o usuário com o login e senha especificados, ou false caso contrário
     }
     
     static getDataLS (key) {
@@ -21,6 +26,21 @@ class StorageManager {
         users.push({"login": login, "password": password});
         localStorage.setItem("users", JSON.stringify(users)); // JSON.stringfy converte objeto em string
         return true;
+    }
+
+    static setAuthenticationSS (login, password) {
+        const user = this.getUserLS(login, password); // Busca o usuário no localStorage
+        if (user) { // Se o usuário existir, ele será armazenado no sessionStorage
+            sessionStorage.setItem("authenticated", JSON.stringify(login));
+            return true; // Retorna true para confirmar que o usuário foi autenticado
+        } else {
+            alert("Usuário ou senha inválidos.");
+            return false; // Retorna false se o usuário não existir no localStorage
+        }
+    }
+
+    static getAuthenticationSS () {
+        return JSON.parse(sessionStorage.getItem("authenticated")) ? true : false; // Retorna true se houver um usuário estiver autenticado no momento, false caso contrário
     }
 }
 
