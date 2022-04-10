@@ -4,9 +4,9 @@ import StorageManager from "../../services/StorageManager";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
-  const [login, setLogin] = useState(""); 
-  const [password, setPassword] = useState("");
-  const [cnfPassword, setCnfPassword] = useState("");
+  const [login, setLogin] = useState(""); // Estado de login
+  const [password, setPassword] = useState(""); // Estado de senha
+  const [cnfPassword, setCnfPassword] = useState(""); // Estado de confirmação de senha
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que a página seja recarregada
@@ -34,7 +34,7 @@ function Login() {
           <div className="header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
-          <form className="login-form" onSubmit={handleSubmit}>
+          <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
             <span className="login-form-title"> Cadastro de novo Usuário </span>
             <div className="wrap-input">
               <input
