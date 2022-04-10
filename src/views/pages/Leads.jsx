@@ -19,6 +19,9 @@ function Leads() {
         <div className="nav-bar-btn-wrap">
           <button className="nav-bar-btn">Novo Lead</button>
         </div>
+        <div className="nav-bar-txt-welcome-wrap">
+          <h1 className="nav-bar-txt-welcome"> Bem vindo {`${StorageManager.getLoggedUser()}!`} </h1>
+        </div>
       </nav>
     </div>
   );
