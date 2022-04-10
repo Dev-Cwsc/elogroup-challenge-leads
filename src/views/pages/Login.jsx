@@ -21,7 +21,7 @@ function Login() {
     <div className="container">
       <div className="container-login">
         <div className="wrap-login">
-          <div className="header-form-img">
+          <div className="container-header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
           <form className="login-form" onSubmit={handlerLogin}> {/* Função manipuladora que é acionada ao submeter o formulário de login */}
