@@ -13,6 +13,11 @@ body, html {
     margin: 0 auto;
 }
 
+.container-header-form-img{
+    width: 100%;
+    margin-bottom: 37px;
+}
+
 .container-login {
     width: 100%;
     min-height: 100vh;
@@ -36,10 +41,10 @@ body, html {
 }
 
 .login-form-title {
-    font-family: "PP Telegraf Regular", Sans-serif;
+    font-family: Nunito, sans-serif;
     display: block;
     font-size: 18px;
-    color: azure;
+    color: whitesmoke;
     line-height: 1.2;
     text-align: center;
     margin-bottom: 37px;
@@ -54,7 +59,7 @@ body, html {
 
 .input {
     font-size: 15px;
-    color: #fff;
+    color: whitesmoke;
     line-height: 1.2;
     border: none;
     display: block;
@@ -181,12 +186,52 @@ body, html {
     text-decoration: none;
 }
 
-.header-form-img{
-    width: 100%;
-    margin-bottom: 37px;
-}
-
 .img-elogroup{
     width: 100%;
     height: 100%;
+}
+
+.nav-bar{
+    background-color: #272727;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-bar-logo{
+    width: 270px;
+    height: 70px;
+    display: block;
+    float: left;
+}
+
+.nav-bar-logo:hover{
+    cursor: pointer;
+}
+
+.nav-bar-btn-wrap{
+    display: flex;
+    width: 150px;
+    height: 70px;
+    float: right;
+    align-items: center;
+}
+
+.nav-bar-btn{
+    font-size: 15px;
+    border: none;
+    color: whitesmoke;
+    line-height: 1.2;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #1822DC;
+    padding: 10px;
+}
+
+.nav-bar-btn:hover {
+    cursor: pointer;
+    background: #13199b;
 }
