@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./css/styles.css";
+import StorageManager from "../../services/StorageManager";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
@@ -8,12 +9,8 @@ function Login() {
 
   const handlerLogin = (e) => {
     e.preventDefault();
-    if (login === localStorage.getItem('Login') && password === localStorage.getItem('Password')) {
-      alert("Login efetuado com sucesso!");
-      setLogin("");
-      setPassword("");
-    } else {
-      alert("Login ou senha incorretos!");
+    if(StorageManager.setAuthenticationSS(login, password)) { // Tenta fazer a autenticação do usuário
+      window.location.href = "/Leads"; // Se a autenticação for bem sucedida, redireciona para a página de manutenção de leads
     }
   }
 
