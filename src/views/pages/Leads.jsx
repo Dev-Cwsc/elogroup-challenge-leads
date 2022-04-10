@@ -1,7 +1,25 @@
+import "./css/styles.css";
+import egIMG from "./components/elogroup.png";
+import StorageManager from "../../services/StorageManager";
+
 function Leads() {
+  const exitHandler = () => {
+    window.location.href = "/"; // Redireciona para a página de login
+    StorageManager.clearAuthenticationSS(); // Limpa o armazenamento de autenticação
+  }
   return (
-    <div>
-      <h1> Aqui será a página de manutenção de leads </h1>
+    <div className="container">
+      <nav className="nav-bar">
+        <div className="nav-bar-logo" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
+          <img src={egIMG} className="img-elogroup" alt="EloGroup" />
+        </div>
+        <div className="nav-bar-btn-wrap">
+          <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
+        </div>
+        <div className="nav-bar-btn-wrap">
+          <button className="nav-bar-btn">Novo Lead</button>
+        </div>
+      </nav>
     </div>
   );
 }
