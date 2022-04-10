@@ -10,13 +10,13 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que a página seja recarregada
-    if (password !== cnfPassword) { // Verifica se as senhas são iguais
-      alert("Senhas não conferem.");
-      return;
-    } else if (login === '' || password === '' || cnfPassword === '') { // Verifica se todos os campos estão preenchidos
+    if (login === '' || password === '' || cnfPassword === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
       return;
-    } else if (StorageManager.storeLS("login", login) && StorageManager.storeLS("password", password)) { // Se o login e a senha foram armazenados no localStorage
+    } else if (password !== cnfPassword) { // Verifica se as senhas são iguais
+      alert("As senhas não conferem."); // Se não forem, exibe uma mensagem de erro
+      return;
+    } else if (StorageManager.setUserLS(login, password)) { // Se todos os campos estiverem preenchidos e as senhas forem iguais, salva o usuário no localStorage
       alert('Usuário e senha cadastrados com sucesso!'); // Exibe uma mensagem de sucesso
       setLogin(""); // Limpa os campos
       setPassword("");
