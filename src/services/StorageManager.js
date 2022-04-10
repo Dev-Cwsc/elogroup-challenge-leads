@@ -1,19 +1,25 @@
 class StorageManager {
-    static readLS (key) {
-        return JSON.parse(localStorage.getItem(key)); // JSON.parse interpreta o JSON e transforma em objeto
+    static userExists (login){
+        const users = this.getDataLS("users");
+        return users.find(object => object.login === login) ? true : false; // Retorna true se encontrar um usuário com o login especificado, false caso contrário
+    }
+    
+    static getDataLS (key) {
+        const data = JSON.parse(localStorage.getItem(key)); // JSON.parse interpreta o JSON e transforma em objeto
+        return data;
     }
 
-    static storeLS (key, value) {
-        let data = [];
-        if (this.readLS(key)) { // Se já existir algum valor no localStorage, ele será armazenado em um array
-            data = JSON.parse(localStorage.getItem(key));
-            if(data.find(function(str){return str === value;})){
-                alert("O valor já existe no localStorage");
+    static setUserLS (login, password) {
+        let users = [];
+        if (this.getDataLS("users")) { // Se já existirem usuários cadastrados no localSotrage, eles serão armazenados em um array
+            users = this.getDataLS("users");
+            if(this.userExists(login)) { // Se o login já existir, significa que o usuário já está cadastrado
+                alert("Já existe um usuário cadastrado com esse login.");
                 return false;
             }
         }
-        data.push(value);
-        localStorage.setItem(key, JSON.stringify(data)); // JSON.stringfy converte objeto em string
+        users.push({"login": login, "password": password});
+        localStorage.setItem("users", JSON.stringify(users)); // JSON.stringfy converte objeto em string
         return true;
     }
 }
