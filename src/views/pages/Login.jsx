@@ -4,12 +4,15 @@ import StorageManager from "../../services/StorageManager";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(""); // Estado de login
+  const [password, setPassword] = useState(""); // Estado de senha
 
   const handlerLogin = (e) => {
     e.preventDefault();
-    if(StorageManager.setAuthenticationSS(login, password)) { // Tenta fazer a autenticação do usuário
+    if (login === '' || password === '') {
+      alert("Preencha todos os campos.");
+      return;
+    } else if(StorageManager.setAuthenticationSS(login, password)) { // Tenta fazer a autenticação do usuário
       window.location.href = "/Leads"; // Se a autenticação for bem sucedida, redireciona para a página de manutenção de leads
     }
   }
@@ -21,7 +24,7 @@ function Login() {
           <div className="header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
-          <form className="login-form" onSubmit={handlerLogin}>
+          <form className="login-form" onSubmit={handlerLogin}> {/* Função manipuladora que é acionada ao submeter o formulário de login */}
             <span className="login-form-title"> Sistema de Manutenção de Leads </span>
             <div className="wrap-input">
               <input
