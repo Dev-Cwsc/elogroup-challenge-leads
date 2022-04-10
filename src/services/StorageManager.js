@@ -44,7 +44,7 @@ class StorageManager {
     }
 
     static clearAuthenticationSS () {
-        sessionStorage.clear();
+        sessionStorage.clear(); // Limpa o sessionStorage
     }
 }
 
