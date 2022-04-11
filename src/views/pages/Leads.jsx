@@ -8,11 +8,13 @@ function Leads() {
   let [leadList, updateLeadList] = useState(StorageManager.getLeadsLS());
   //let leadList = StorageManager.getLeadsLS();
 
-  const mouseDragEnd = (e) => {
+  const mouseDragHandler = (e) => {
     e.preventDefault();
-    leadList[e.target.id].status = "Dados confirmados";
-    let leadListCopy = [...leadList];
-    updateLeadList(leadListCopy);
+    if(window.confirm("Realmente deseja avançar uma etapa? Esta ação não poderá ser desfeita.")){
+      leadList = StorageManager.updateStateLeadLS(e.target.id);
+      updateLeadList(leadList);
+      window.location.reload(false);
+    }
   }
 
   const exitHandler = () => {
@@ -49,7 +51,7 @@ function Leads() {
             {leadList.map((value, index) => {
               if (value.status === "Cliente em potencial") {
                 return (<tr key={index}>
-                  <td id={index} draggable={true} onDragEnd={mouseDragEnd}>{value.name}</td>
+                  <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
                   <td></td>
                   <td></td>
                 </tr>)
@@ -57,7 +59,7 @@ function Leads() {
               if (value.status === "Dados confirmados") {
                 return (<tr key={index}>
                   <td></td>
-                  <td id={index} draggable={true} onDragEnd={mouseDragEnd}>{value.name}</td>
+                  <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
                   <td></td>
                 </tr>)
               }
@@ -65,7 +67,7 @@ function Leads() {
                 return (<tr key={index}>
                   <td></td>
                   <td></td>
-                  <td id={index} draggable={true} onDragEnd={mouseDragEnd}>{value.name}</td>
+                  <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
                 </tr>)
               }
               return <></>
