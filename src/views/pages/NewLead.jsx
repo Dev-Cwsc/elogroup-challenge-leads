@@ -11,7 +11,7 @@ function NewLead() {
   const [checkBoxes, setAll] = useState(
     {
       "rpa": false,
-      "digitalProdutct": false,
+      "digitalProduct": false,
       "analytics": false,
       "bpm": false
     }
@@ -21,7 +21,7 @@ function NewLead() {
     if(e.target.name==="all"){ // Se o checkbox for o "all", marca ou desmarca todas as outras
       setAll({
         "rpa": e.target.checked,
-        "digitalProdutct": e.target.checked,
+        "digitalProduct": e.target.checked,
         "analytics": e.target.checked,
         "bpm": e.target.checked
       });
@@ -52,7 +52,7 @@ function NewLead() {
   return (
     <div className="container">
       <nav className="nav-bar">
-        <div className="nav-bar-logo" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
+        <div className="nav-bar-logo-wrap" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
           <img src={egIMG} className="img-elogroup" alt="EloGroup" />
         </div>
         <div className="nav-bar-txt-welcome-wrap">
@@ -103,7 +103,7 @@ function NewLead() {
             <div className="checkbox-wrap">
               <input className="checkbox" name="all" onChange={handleCheck} checked={checkBoxes.all} type="checkbox" /> Todos <br />
               <input className="checkbox" name="rpa" onChange={handleCheck} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
-              <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
+              <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProduct} type="checkbox" /> Produto digital <br />
               <input className="checkbox" name="analytics" onChange={handleCheck} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
               <input className="checkbox" name="bpm" onChange={handleCheck} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
