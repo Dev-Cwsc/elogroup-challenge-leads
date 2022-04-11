@@ -6,11 +6,10 @@ import { useState } from "react";
 function Leads() {
   // hooks
   let [leadList, updateLeadList] = useState(StorageManager.getLeadsLS());
-  //let leadList = StorageManager.getLeadsLS();
 
-  const mouseDragHandler = (e) => {
+  const mouseDragHandler = (e) => { // Função para arrastar o elemento
     e.preventDefault();
-    if(window.confirm("Realmente deseja avançar uma etapa? Esta ação não poderá ser desfeita.")){
+    if (window.confirm("Realmente deseja avançar uma etapa? Esta ação não poderá ser desfeita.")) {
       leadList = StorageManager.updateStateLeadLS(e.target.id);
       updateLeadList(leadList);
       window.location.reload(false);
@@ -48,32 +47,34 @@ function Leads() {
             </tr>
           </thead>
           <tbody>
-            {leadList.map((value, index) => {
-              if (value.status === "Cliente em potencial") {
-                return (<tr key={index}>
-                  <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
-                  <td></td>
-                  <td></td>
-                </tr>)
-              }
-              if (value.status === "Dados confirmados") {
-                return (<tr key={index}>
-                  <td></td>
-                  <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
-                  <td></td>
-                </tr>)
-              }
-              if (value.status === "Reunião agendada") {
-                return (<tr key={index}>
-                  <td></td>
-                  <td></td>
-                  <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
-                </tr>)
-              }
-              return <></>
-            })}
+            {
+              leadList.map((value, index) => {
+                if (value.status === "Cliente em potencial") {
+                  return (<tr key={index}>
+                    <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>)
+                }
+                if (value.status === "Dados confirmados") {
+                  return (<tr key={index}>
+                    <td></td>
+                    <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
+                    <td></td>
+                  </tr>)
+                }
+                if (value.status === "Reunião agendada") {
+                  return (<tr key={index}>
+                    <td></td>
+                    <td></td>
+                    <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
+                  </tr>)
+                }
+                return <></>
+              })
+            }
           </tbody>
-          </table>
+        </table>
       </div>
     </div>
   );
