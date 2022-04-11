@@ -9,15 +9,23 @@ function NewLead() {
   const [phone, setPassword] = useState("");
   const [email, setCnfPassword] = useState("");
   const [checkBoxes, setAll] = useState(
-    {"all": true}, 
-    {"rpa": true},
-    {"digitalProdutct": true},
-    {"analytics": true},
-    {"bpm": true}
+    {
+      "all": false,
+      "rpa": false,
+      "digitalProdutct": false,
+      "analytics": false,
+      "bpm": false
+    }
   );
 
   const checkAll = (e) => {
-    console.log(e.target.value)
+    setAll({
+      "all": e.target.checked,
+      "rpa": e.target.checked,
+      "digitalProdutct": e.target.checked,
+      "analytics": e.target.checked,
+      "bpm": e.target.checked
+    });
   }
 
   const handleSubmit = (e) => {
@@ -84,11 +92,11 @@ function NewLead() {
             </div>
             <span> Oportunidades: </span>
             <div className="checkbox-wrap">
-              <input className="checkbox" name="all" onClick={checkAll} checked={checkBoxes.all} type="checkbox" /> Todos <br />
-              <input className="checkbox" name="rpa" onClick={checkAll} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
-              <input className="checkbox" name="digitalProduct" onClick={checkAll} checked={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
-              <input className="checkbox" name="analytics" onClick={checkAll} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
-              <input className="checkbox" name="bpm" onClick={checkAll} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
+              <input className="checkbox" name="all" onChange={checkAll} checked={checkBoxes.all} type="checkbox" /> Todos <br />
+              <input className="checkbox" name="rpa" checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
+              <input className="checkbox" name="digitalProduct" checked={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
+              <input className="checkbox" name="analytics" checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
+              <input className="checkbox" name="bpm" checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
             <div className="container-login-form-btn-leads">
               <button className="form-btn">Cadastrar</button>
