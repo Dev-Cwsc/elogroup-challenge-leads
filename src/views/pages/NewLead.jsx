@@ -40,7 +40,6 @@ function NewLead() {
       return;
     } else if (StorageManager.setLeadsLS(leadName, phone, email, {...checkBoxes})) { // Se todos os campos estiverem preenchidos, verifica se o lead foi cadastrado
       alert("Lead cadastrado com sucesso!"); // Se o lead foi cadastrado, exibe uma mensagem de sucesso
-      console.log({...checkBoxes});
       window.location.href = "/Leads"; // Redireciona para a página de manutenção de leads
     }
   }
