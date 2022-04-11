@@ -4,21 +4,20 @@ import egIMG from "./components/elogroup.png";
 import StorageManager from "../../services/StorageManager";
 
 function NewLead() {
+  // hooks
   const [leadName, setLogin] = useState("");
   const [phone, setPassword] = useState("");
   const [email, setCnfPassword] = useState("");
-  const [all, setAll] = useState(false);
-  const [rpa, setRpa] = useState(false);
-  const [digitalProduct, setDigitalProduct] = useState(false);
-  const [analytics, setAnalytics] = useState(false);
-  const [bpm, setBpm] = useState(false);
+  const [checkBoxes, setAll] = useState(
+    {"all": true}, 
+    {"rpa": true},
+    {"digitalProdutct": true},
+    {"analytics": true},
+    {"bpm": true}
+  );
 
-  const checkAll = () => {
-    setAll(!all);
-    setRpa(all);
-    setDigitalProduct(all);
-    setAnalytics(all);
-    setBpm(all);
+  const checkAll = (e) => {
+    console.log(e.target.value)
   }
 
   const handleSubmit = (e) => {
@@ -83,12 +82,13 @@ function NewLead() {
               />
               <span className="focus-input-dark" data-placeholder="Email"></span>
             </div>
+            <span> Oportunidades: </span>
             <div className="checkbox-wrap">
-              <input className="checkbox" onClick = {checkAll} value={all} type="checkbox"/> Todos <br/>
-              <input className="checkbox" value={rpa} type="checkbox"/> RPA <br/>
-              <input className="checkbox" value={digitalProduct} type="checkbox"/> Produto digital <br/>
-              <input className="checkbox" value={analytics} type="checkbox"/> Analytics <br/>
-              <input className="checkbox" value={bpm} type="checkbox"/> BPM <br/>
+              <input className="checkbox" onClick={checkAll} value={checkBoxes.all} type="checkbox" lable="" /> Todos <br />
+              <input className="checkbox" onClick={checkAll} value={checkBoxes.rpa} type="checkbox" /> RPA <br />
+              <input className="checkbox" onClick={checkAll} value={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
+              <input className="checkbox" onClick={checkAll} value={checkBoxes.analytics} type="checkbox" /> Analytics <br />
+              <input className="checkbox" onClick={checkAll} value={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
             <div className="container-login-form-btn-leads">
               <button className="form-btn">Cadastrar</button>
