@@ -26,7 +26,10 @@ function NewLead() {
         "bpm": e.target.checked
       });
     } else { // Se não for o "all", atualiza o estado de acordo com o checkbox clicado
-      setAll(checkBoxes[e.target.name] = e.target.checked);
+      setAll({
+        ...checkBoxes,
+        [e.target.name]: e.target.checked
+      });
     }
   }
 
