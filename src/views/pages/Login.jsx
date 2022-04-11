@@ -25,7 +25,7 @@ function Login() {
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
           <form className="login-form" onSubmit={handlerLogin}> {/* Função manipuladora que é acionada ao submeter o formulário de login */}
-            <span className="login-form-title"> Sistema de Manutenção de Leads </span>
+            <h1 className="login-form-title"> Manutenção de Leads </h1>
             <div className="wrap-input">
               <input
                 className={login !== "" ? "has-val input" : "input"}
