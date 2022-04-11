@@ -1,12 +1,25 @@
 import "./css/styles.css";
 import egIMG from "./components/elogroup.png";
 import StorageManager from "../../services/StorageManager";
+import { useState } from "react";
 
 function Leads() {
+  // hooks
+  let [leadList, updateLeadList] = useState(StorageManager.getLeadsLS());
+  //let leadList = StorageManager.getLeadsLS();
+
+  const mouseDragEnd = (e) => {
+    e.preventDefault();
+    leadList[e.target.id].status = "Dados confirmados";
+    let leadListCopy = [...leadList];
+    updateLeadList(leadListCopy);
+  }
+
   const exitHandler = () => {
     window.location.href = "/"; // Redireciona para a página de login
     StorageManager.clearAuthenticationSS(); // Limpa o armazenamento de autenticação
   }
+
   return (
     <div className="container">
       <nav className="nav-bar">
@@ -14,7 +27,7 @@ function Leads() {
           <img src={egIMG} className="img-elogroup" alt="EloGroup" />
         </div>
         <div className="nav-bar-txt-welcome-wrap">
-          <h1 className="nav-bar-txt-welcome"> Bem vindo {`${StorageManager.getLoggedUser()}!`} </h1>
+          <h1 className="nav-bar-txt-welcome"> Bem vindo(a) {`${StorageManager.getLoggedUser()}!`} </h1>
         </div>
         <div className="nav-bar-btn-wrap">
           <button onClick={() => window.location.href = "/newLead"} className="nav-bar-btn">Novo Lead</button>
@@ -24,7 +37,7 @@ function Leads() {
         </div>
       </nav>
       <div className="container-login">
-        {/*<Table striped bordered hover >
+        <table>
           <thead>
             <tr>
               <th>Cliente em Potencial</th>
@@ -33,32 +46,32 @@ function Leads() {
             </tr>
           </thead>
           <tbody>
-            {this.state.leadList.map((value, index) => {
-              if (value.Status === "Cliente em Potencial") {
+            {leadList.map((value, index) => {
+              if (value.status === "Cliente em potencial") {
                 return (<tr key={index}>
-                  <td id={index} draggable={true} onDragEnd={this.mouseDragEnd}>{value.name}</td>
+                  <td id={index} draggable={true} onDragEnd={mouseDragEnd}>{value.name}</td>
                   <td></td>
                   <td></td>
                 </tr>)
               }
-              if (value.Status === "Dados Confirmados") {
+              if (value.status === "Dados confirmados") {
                 return (<tr key={index}>
                   <td></td>
-                  <td id={index} draggable={true} onDragEnd={this.mouseDragEnd}>{value.name}</td>
+                  <td id={index} draggable={true} onDragEnd={mouseDragEnd}>{value.name}</td>
                   <td></td>
                 </tr>)
               }
-              if (value.Status === "Reuniao Agendada") {
+              if (value.status === "Reunião agendada") {
                 return (<tr key={index}>
                   <td></td>
                   <td></td>
-                  <td id={index} draggable={true} onDragEnd={this.mouseDragEnd}>{value.name}</td>
+                  <td id={index} draggable={true} onDragEnd={mouseDragEnd}>{value.name}</td>
                 </tr>)
               }
               return <></>
             })}
           </tbody>
-          </Table>*/}
+          </table>
       </div>
     </div>
   );
