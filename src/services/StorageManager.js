@@ -28,6 +28,16 @@ class StorageManager {
         return true;
     }
 
+    static setLeadsLS (leadName, phone, email, rpa, digitalProduct, analytics, bpm) {
+        let leads = [];
+        if (this.getDataLS("leads")) { // Se já existirem leads cadastrados no localSotrage, eles serão armazenados em um array
+            leads = this.getDataLS("leads");
+        }
+        leads.push({"name": leadName, "phone": phone, "email": email, "rpa": rpa, "digitalProduct": digitalProduct, "analytics": analytics, "bpm": bpm});
+        localStorage.setItem("leads", JSON.stringify(leads)); // JSON.stringfy converte objeto em string
+        return true;
+    }
+
     static setAuthenticationSS (login, password) {
         const user = this.getUserLS(login, password); // Busca o usuário no localStorage
         if (user) { // Se o usuário existir, ele será armazenado no sessionStorage
