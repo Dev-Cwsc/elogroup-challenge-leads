@@ -10,7 +10,6 @@ function NewLead() {
   const [email, setCnfPassword] = useState("");
   const [checkBoxes, setAll] = useState(
     {
-      "all": false,
       "rpa": false,
       "digitalProdutct": false,
       "analytics": false,
@@ -21,7 +20,6 @@ function NewLead() {
   const handleCheck = (e) => { // Função para atualizar o estado de checkbox
     if(e.target.name==="all"){ // Se o checkbox for o "all", marca ou desmarca todas as outras
       setAll({ 
-        "all": e.target.checked,
         "rpa": e.target.checked,
         "digitalProdutct": e.target.checked,
         "analytics": e.target.checked,
