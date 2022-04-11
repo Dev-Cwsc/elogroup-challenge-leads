@@ -10,7 +10,7 @@ function Leads() {
   return (
     <div className="container">
       <nav className="nav-bar">
-        <div className="nav-bar-logo" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
+        <div className="nav-bar-logo-wrap" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
           <img src={egIMG} className="img-elogroup" alt="EloGroup" />
         </div>
         <div className="nav-bar-txt-welcome-wrap">
