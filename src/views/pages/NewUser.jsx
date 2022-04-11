@@ -35,7 +35,7 @@ function Login() {
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
           <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
-            <span className="login-form-title"> Cadastro de novo Usuário </span>
+            <h1 className="login-form-title"> Cadastro de novo Usuário </h1>
             <div className="wrap-input">
               <input
                 className={login !== "" ? "has-val input" : "input"}
