@@ -7,6 +7,7 @@ function Login() {
   const [login, setLogin] = useState(""); // Estado de login
   const [password, setPassword] = useState(""); // Estado de senha
   const [cnfPassword, setCnfPassword] = useState(""); // Estado de confirmação de senha
+  const regexTest = RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"); // Regex para testar a senha
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que a página seja recarregada
@@ -15,6 +16,9 @@ function Login() {
       return;
     } else if (password !== cnfPassword) { // Verifica se as senhas são iguais
       alert("As senhas não conferem."); // Se não forem, exibe uma mensagem de erro
+      return;
+    } else if (!regexTest.test(password)) { // Se a senha não estiver no padrão
+      alert("A senha deve conter pelo menos 8 caracteres, 1 letra, 1 número e 1 caractere especial."); // Exibe uma mensagem de erro
       return;
     } else if (StorageManager.setUserLS(login, password)) { // Se todos os campos estiverem preenchidos e as senhas forem iguais, salva o usuário no localStorage
       alert('Usuário e senha cadastrados com sucesso!'); // Exibe uma mensagem de sucesso
