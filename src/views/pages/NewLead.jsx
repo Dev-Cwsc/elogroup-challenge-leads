@@ -4,26 +4,28 @@ import egIMG from "./components/elogroup.png";
 import StorageManager from "../../services/StorageManager";
 
 function NewLead() {
-  const [login, setLogin] = useState(""); // Estado de login
-  const [password, setPassword] = useState(""); // Estado de senha
-  const [cnfPassword, setCnfPassword] = useState(""); // Estado de confirmação de senha
+  const [leadName, setLogin] = useState("");
+  const [phone, setPassword] = useState("");
+  const [email, setCnfPassword] = useState("");
+  const [all, setAll] = useState(false);
+  const [rpa, setRpa] = useState(false);
+  const [digitalProduct, setDigitalProduct] = useState(false);
+  const [analytics, setAnalytics] = useState(false);
+  const [bpm, setBpm] = useState(false);
+
+  const checkAll = () => {
+    setAll(!all);
+    setRpa(all);
+    setDigitalProduct(all);
+    setAnalytics(all);
+    setBpm(all);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita que a página seja recarregada
-    if (login === '' || password === '' || cnfPassword === '') { // Verifica se todos os campos estão preenchidos
+    if (leadName === '' || phone === '' || email === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
       return;
-    } else if (password !== cnfPassword) { // Verifica se as senhas são iguais
-      alert("As senhas não conferem."); // Se não forem, exibe uma mensagem de erro
-      return;
-    } else if (StorageManager.setUserLS(login, password)) { // Se todos os campos estiverem preenchidos e as senhas forem iguais, salva o usuário no localStorage
-      alert('Usuário e senha cadastrados com sucesso!'); // Exibe uma mensagem de sucesso
-      setLogin(""); // Limpa os campos
-      setPassword("");
-      setCnfPassword("");
-      window.location.href = "/"; // Redireciona para a página principal
-    } else { // Se não conseguir fazer o cadastro corretamente exibe uma mensagem de erro
-      alert('Erro ao cadastrar usuário e senha');
     }
   }
 
@@ -51,11 +53,12 @@ function NewLead() {
         <div className="wrap-login-white">
           <div className="container-header-form-img"></div>
           <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
+            <h1 className="login-form-title-dark"> Dados de cadastro </h1>
             <div className="wrap-input-dark">
               <input
-                className={login !== "" ? "has-val-dark input-dark" : "input-dark"}
+                className={leadName !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="text"
-                value={login}
+                value={leadName}
                 onChange={(e) => setLogin(e.target.value)}
               />
               <span className="focus-input-dark" data-placeholder="Nome"></span>
@@ -63,9 +66,9 @@ function NewLead() {
 
             <div className="wrap-input-dark">
               <input
-                className={password !== "" ? "has-val-dark input-dark" : "input-dark"}
+                className={phone !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="phone"
-                value={password}
+                value={phone}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <span className="focus-input-dark" data-placeholder="Telefone"></span>
@@ -73,12 +76,19 @@ function NewLead() {
 
             <div className="wrap-input-dark">
               <input
-                className={cnfPassword !== "" ? "has-val-dark input-dark" : "input-dark"}
+                className={email !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="email"
-                value={cnfPassword}
+                value={email}
                 onChange={(e) => setCnfPassword(e.target.value)}
               />
               <span className="focus-input-dark" data-placeholder="Email"></span>
+            </div>
+            <div className="checkbox-wrap">
+              <input className="checkbox" onClick = {checkAll} value={all} type="checkbox"/> Todos <br/>
+              <input className="checkbox" value={rpa} type="checkbox"/> RPA <br/>
+              <input className="checkbox" value={digitalProduct} type="checkbox"/> Produto digital <br/>
+              <input className="checkbox" value={analytics} type="checkbox"/> Analytics <br/>
+              <input className="checkbox" value={bpm} type="checkbox"/> BPM <br/>
             </div>
             <div className="container-login-form-btn-leads">
               <button className="form-btn">Cadastrar</button>
