@@ -103,7 +103,7 @@ function NewLead() {
             <div className="checkbox-wrap">
               <input className="checkbox" name="all" onChange={handleCheck} checked={checkBoxes.all} type="checkbox" /> Todos <br />
               <input className="checkbox" name="rpa" onChange={handleCheck} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
-              <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProduct} type="checkbox" /> Produto digital <br />
+              <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProduct} type="checkbox" /> Produto Digital <br />
               <input className="checkbox" name="analytics" onChange={handleCheck} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
               <input className="checkbox" name="bpm" onChange={handleCheck} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
