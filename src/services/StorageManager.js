@@ -33,7 +33,7 @@ class StorageManager {
         if (this.getDataLS("leads")) { // Se já existirem leads cadastrados no localSotrage, eles serão armazenados em um array
             leads = this.getDataLS("leads");
         }
-        leads.push({"name": leadName, "phone": phone, "email": email, rpa, digitalProduct, analytics, bpm});
+        leads.push({"name": leadName, "phone": phone, "email": email, "oportunities": rpa, digitalProduct, analytics, bpm});
         localStorage.setItem("leads", JSON.stringify(leads)); // JSON.stringfy converte objeto em string
         return true;
     }
