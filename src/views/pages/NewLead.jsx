@@ -18,14 +18,18 @@ function NewLead() {
     }
   );
 
-  const checkAll = (e) => {
-    setAll({
-      "all": e.target.checked,
-      "rpa": e.target.checked,
-      "digitalProdutct": e.target.checked,
-      "analytics": e.target.checked,
-      "bpm": e.target.checked
-    });
+  const handleCheck = (e) => { // Função para atualizar o estado de checkbox
+    if(e.target.name==="all"){ // Se o checkbox for o "all", marca ou desmarca todas as outras
+      setAll({ 
+        "all": e.target.checked,
+        "rpa": e.target.checked,
+        "digitalProdutct": e.target.checked,
+        "analytics": e.target.checked,
+        "bpm": e.target.checked
+      });
+    } else { // Se não for o "all", atualiza o estado de acordo com o checkbox clicado
+      setAll(checkBoxes[e.target.name] = e.target.checked);
+    }
   }
 
   const handleSubmit = (e) => {
@@ -33,6 +37,10 @@ function NewLead() {
     if (leadName === '' || phone === '' || email === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
       return;
+    } else if (StorageManager.setLeadsLS(leadName, phone, email, {...checkBoxes})) { // Se todos os campos estiverem preenchidos, verifica se o lead foi cadastrado
+      alert("Lead cadastrado com sucesso!"); // Se o lead foi cadastrado, exibe uma mensagem de sucesso
+      console.log({...checkBoxes});
+      window.location.href = "/Leads"; // Redireciona para a página de manutenção de leads
     }
   }
 
@@ -92,11 +100,11 @@ function NewLead() {
             </div>
             <span> Oportunidades: </span>
             <div className="checkbox-wrap">
-              <input className="checkbox" name="all" onChange={checkAll} checked={checkBoxes.all} type="checkbox" /> Todos <br />
-              <input className="checkbox" name="rpa" checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
-              <input className="checkbox" name="digitalProduct" checked={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
-              <input className="checkbox" name="analytics" checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
-              <input className="checkbox" name="bpm" checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
+              <input className="checkbox" name="all" onChange={handleCheck} checked={checkBoxes.all} type="checkbox" /> Todos <br />
+              <input className="checkbox" name="rpa" onChange={handleCheck} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
+              <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
+              <input className="checkbox" name="analytics" onChange={handleCheck} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
+              <input className="checkbox" name="bpm" onChange={handleCheck} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
             <div className="container-login-form-btn-leads">
               <button className="form-btn">Cadastrar</button>
