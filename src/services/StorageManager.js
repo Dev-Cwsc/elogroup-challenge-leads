@@ -38,15 +38,19 @@ class StorageManager {
         return true;
     }
 
-    static getLeadsLS () {
+    static getLeadsLS () { // Retorna todos os leads armazenados no localStorage
         const leads = this.getDataLS("leads");
         return leads;
     }
 
-    static updateStateLeadLS (id, state) {
+    static updateStateLeadLS (id) {
         let leads;
         if (leads = this.getDataLS("leads")){
-            leads[id].status = state;
+            if(leads[id].status==="Cliente em potencial"){
+                leads[id].status = "Dados confirmados";
+            } else if (leads[id].status==="Dados confirmados"){
+                leads[id].status = "Reunião agendada";
+            }
             localStorage.setItem("leads", JSON.stringify(leads));
         }
     }
