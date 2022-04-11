@@ -219,14 +219,14 @@ body, html {
     align-items: center;
 }
 
-.nav-bar-logo{
+.nav-bar-logo-wrap{
     width: 270px;
     height: 70px;
     display: block;
     float: left;
 }
 
-.nav-bar-logo:hover{
+.nav-bar-logo-wrap:hover{
     cursor: pointer;
 }
 
