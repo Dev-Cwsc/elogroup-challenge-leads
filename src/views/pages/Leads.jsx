@@ -24,7 +24,41 @@ function Leads() {
         </div>
       </nav>
       <div className="container-login">
-
+        {/*<Table striped bordered hover >
+          <thead>
+            <tr>
+              <th>Cliente em Potencial</th>
+              <th>Dados Confirmados</th>
+              <th>Reunião Agendada</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.leadList.map((value, index) => {
+              if (value.Status === "Cliente em Potencial") {
+                return (<tr key={index}>
+                  <td id={index} draggable={true} onDragEnd={this.mouseDragEnd}>{value.name}</td>
+                  <td></td>
+                  <td></td>
+                </tr>)
+              }
+              if (value.Status === "Dados Confirmados") {
+                return (<tr key={index}>
+                  <td></td>
+                  <td id={index} draggable={true} onDragEnd={this.mouseDragEnd}>{value.name}</td>
+                  <td></td>
+                </tr>)
+              }
+              if (value.Status === "Reuniao Agendada") {
+                return (<tr key={index}>
+                  <td></td>
+                  <td></td>
+                  <td id={index} draggable={true} onDragEnd={this.mouseDragEnd}>{value.name}</td>
+                </tr>)
+              }
+              return <></>
+            })}
+          </tbody>
+          </Table>*/}
       </div>
     </div>
   );
