@@ -33,9 +33,22 @@ class StorageManager {
         if (this.getDataLS("leads")) { // Se já existirem leads cadastrados no localSotrage, eles serão armazenados em um array
             leads = this.getDataLS("leads");
         }
-        leads.push({"name": leadName, "phone": phone, "email": email, "oportunities": rpa, digitalProduct, analytics, bpm});
+        leads.push({"name": leadName, "phone": phone, "email": email, "oportunities": rpa, digitalProduct, analytics, bpm, "status": "Cliente em potencial"});
         localStorage.setItem("leads", JSON.stringify(leads)); // JSON.stringfy converte objeto em string
         return true;
+    }
+
+    static getLeadsLS () {
+        const leads = this.getDataLS("leads");
+        return leads;
+    }
+
+    static updateStateLeadLS (id, state) {
+        let leads;
+        if (leads = this.getDataLS("leads")){
+            leads[id].status = state;
+            localStorage.setItem("leads", JSON.stringify(leads));
+        }
     }
 
     static setAuthenticationSS (login, password) {
