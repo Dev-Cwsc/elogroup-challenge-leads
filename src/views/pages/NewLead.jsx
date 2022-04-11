@@ -37,14 +37,14 @@ function NewLead() {
         <div className="nav-bar-logo" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
           <img src={egIMG} className="img-elogroup" alt="EloGroup" />
         </div>
-        <div className="nav-bar-btn-wrap">
-          <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
+        <div className="nav-bar-txt-welcome-wrap">
+          <h1 className="nav-bar-txt-welcome"> Cadastrar novo Lead </h1>
         </div>
         <div className="nav-bar-btn-wrap">
           <button onClick={() => window.location.href = "/leads"} className="nav-bar-btn">Cancelar</button>
         </div>
-        <div className="nav-bar-txt-welcome-wrap">
-          <h1 className="nav-bar-txt-welcome"> Cadastrar novo Lead </h1>
+        <div className="nav-bar-btn-wrap">
+          <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
         </div>
       </nav>
       <div className="container-login">
@@ -80,7 +80,7 @@ function NewLead() {
               />
               <span className="focus-input-dark" data-placeholder="Email"></span>
             </div>
-            <div className="container-login-form-btn">
+            <div className="container-login-form-btn-leads">
               <button className="form-btn">Cadastrar</button>
             </div>
           </form>
