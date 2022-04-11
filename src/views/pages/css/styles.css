@@ -369,7 +369,8 @@ body, html {
 
 .checkbox-wrap{
     display: flex;
-    padding-bottom: 37px;
+    margin-bottom: 37px;
+    margin-top: 20px;
 }
 
 .checkbox {
