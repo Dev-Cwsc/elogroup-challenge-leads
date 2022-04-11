@@ -36,6 +36,13 @@ body, html {
     padding: 77px 55px 33px 55px;
 }
 
+.wrap-login-white {
+    width: 500px;
+    background-color: whitesmoke;
+    overflow: hidden;
+    padding: 77px 55px 33px 55px;
+}
+
 .login-form {
     width: 100%;
 }
@@ -195,7 +202,7 @@ body, html {
     background-color: #272727;
     position: fixed;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .nav-bar-logo{
@@ -218,7 +225,7 @@ body, html {
 }
 
 .nav-bar-txt-welcome-wrap{
-    width: 270px;
+    width: 370px;
     height: 70px;
     display: flex;
     float: right;
@@ -250,4 +257,93 @@ body, html {
 .nav-bar-btn:hover {
     cursor: pointer;
     background: #13199b;
+}
+
+.wrap-input-dark {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #5f5f5f;
+    margin-bottom: 37px;
+}
+
+.input-dark {
+    font-size: 15px;
+    color: #272727;
+    line-height: 1.2;
+    border: none;
+    display: block;
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    padding: 0 5px;
+    font-family: Nunito, sans-serif;
+}
+
+.focus-input-dark {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    color: #5f5f5f;
+    font-family: Nunito, sans-serif;
+}
+
+.focus-input-dark::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    background: #1822DC;
+    background: -webkit-linear-gradient(to left, #1822DC);
+    background: -o-linear-gradient(to left, #1822DC);
+    background: -moz-linear-gradient(to left, #1822DC);
+    background: linear-gradient(to left, #1822DC);
+}
+
+.focus-input-dark::after {
+    font-family: Nunito, sans-serif;
+    font-size: 15px;
+    color: #5f5f5f;
+    line-height: 1.2;
+    content: attr(data-placeholder);
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 16px;
+    left: 0px;
+    padding-left: 5px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.input-dark:focus {
+    outline: 0;
+}
+
+.input-dark:focus+.focus-input-dark::after {
+    top: -15px;
+}
+
+.input-dark:focus+.focus-input-dark::before {
+    width: 100%;
+}
+
+.has-val-dark+.focus-input-dark::after {
+    top: -15px;
+}
+
+.has-val-dark+.focus-input-dark::before {
+    width: 100%;
 }
