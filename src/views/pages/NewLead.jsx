@@ -84,11 +84,11 @@ function NewLead() {
             </div>
             <span> Oportunidades: </span>
             <div className="checkbox-wrap">
-              <input className="checkbox" onClick={checkAll} value={checkBoxes.all} type="checkbox" lable="" /> Todos <br />
-              <input className="checkbox" onClick={checkAll} value={checkBoxes.rpa} type="checkbox" /> RPA <br />
-              <input className="checkbox" onClick={checkAll} value={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
-              <input className="checkbox" onClick={checkAll} value={checkBoxes.analytics} type="checkbox" /> Analytics <br />
-              <input className="checkbox" onClick={checkAll} value={checkBoxes.bpm} type="checkbox" /> BPM <br />
+              <input className="checkbox" name="all" onClick={checkAll} checked={checkBoxes.all} type="checkbox" /> Todos <br />
+              <input className="checkbox" name="rpa" onClick={checkAll} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
+              <input className="checkbox" name="digitalProduct" onClick={checkAll} checked={checkBoxes.digitalProdutct} type="checkbox" /> Produto digital <br />
+              <input className="checkbox" name="analytics" onClick={checkAll} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
+              <input className="checkbox" name="bpm" onClick={checkAll} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
             <div className="container-login-form-btn-leads">
               <button className="form-btn">Cadastrar</button>
