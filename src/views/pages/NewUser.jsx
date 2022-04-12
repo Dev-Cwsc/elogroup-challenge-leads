@@ -34,13 +34,13 @@ function Login() {
   return (
     <div className="container">
       <div className="container-login">
-        <div className="wrap-login">
+        <div className="wrapper-login">
           <div className="container-header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
           <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
             <h1 className="login-form-title"> Cadastro de novo Usuário </h1>
-            <div className="wrap-input">
+            <div className="container-input">
               <input
                 className={login !== "" ? "has-val input" : "input"}
                 type="text"
@@ -50,7 +50,7 @@ function Login() {
               <span className="focus-input" data-placeholder="Login"></span>
             </div>
 
-            <div className="wrap-input">
+            <div className="container-input">
               <input
                 className={password !== "" ? "has-val input" : "input"}
                 type="password"
@@ -60,7 +60,7 @@ function Login() {
               <span className="focus-input" data-placeholder="Senha"></span>
             </div>
 
-            <div className="wrap-input">
+            <div className="container-input">
               <input
                 className={cnfPassword !== "" ? "has-val input" : "input"}
                 type="password"
@@ -70,7 +70,7 @@ function Login() {
               <span className="focus-input" data-placeholder="Confirme sua senha"></span>
             </div>
 
-            <div className="container-login-form-btn">
+            <div className="container-form-btn">
               <button className="form-btn">Cadastrar</button>
             </div>
 

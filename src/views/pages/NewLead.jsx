@@ -51,25 +51,25 @@ function NewLead() {
   return (
     <div className="container">
       <nav className="nav-bar">
-        <div className="nav-bar-logo-wrap" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
+        <div className="container-nav-bar-logo" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
           <img src={egIMG} className="img-elogroup" alt="EloGroup" />
         </div>
-        <div className="nav-bar-txt-welcome-wrap">
+        <div className="container-nav-bar-txt-welcome">
           <h1 className="nav-bar-txt-welcome"> Cadastrar novo Lead </h1>
         </div>
-        <div className="nav-bar-btn-wrap">
+        <div className="container-nav-bar-btn">
           <button onClick={() => window.location.href = "/leads"} className="nav-bar-btn">Cancelar</button>
         </div>
-        <div className="nav-bar-btn-wrap">
+        <div className="container-nav-bar-btn">
           <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
         </div>
       </nav>
       <div className="container-login">
-        <div className="wrap-login-white">
+        <div className="wrapper-login-white">
           <div className="container-header-form-img"></div>
           <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
             <h1 className="login-form-title-dark"> Dados de cadastro </h1>
-            <div className="wrap-input-dark">
+            <div className="container-input-dark">
               <input
                 className={leadName !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="text"
@@ -79,7 +79,7 @@ function NewLead() {
               <span className="focus-input-dark" data-placeholder="Nome"></span>
             </div>
 
-            <div className="wrap-input-dark">
+            <div className="container-input-dark">
               <input
                 className={phone !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="phone"
@@ -89,7 +89,7 @@ function NewLead() {
               <span className="focus-input-dark" data-placeholder="Telefone"></span>
             </div>
 
-            <div className="wrap-input-dark">
+            <div className="container-input-dark">
               <input
                 className={email !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="email"
@@ -99,14 +99,14 @@ function NewLead() {
               <span className="focus-input-dark" data-placeholder="Email"></span>
             </div>
             <span> Oportunidades: </span>
-            <div className="checkbox-wrap">
+            <div className="wrapper-checkboxes">
               <input className="checkbox" name="all" onChange={handleCheck} checked={checkBoxes.all} type="checkbox" /> Todos <br />
               <input className="checkbox" name="rpa" onChange={handleCheck} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
               <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProduct} type="checkbox" /> Produto Digital <br />
               <input className="checkbox" name="analytics" onChange={handleCheck} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
               <input className="checkbox" name="bpm" onChange={handleCheck} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
             </div>
-            <div className="container-login-form-btn-leads">
+            <div className="container-form-btn">
               <button className="form-btn">Cadastrar</button>
             </div>
           </form>

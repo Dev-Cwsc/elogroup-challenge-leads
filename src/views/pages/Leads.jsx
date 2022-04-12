@@ -21,19 +21,47 @@ function Leads() {
     StorageManager.clearAuthenticationSS(); // Limpa o armazenamento de autenticação
   }
 
+  const verification = () => { // Função para verificar se existem leads cadastrados
+    if (!leadList) return (<></>)
+    return leadList.map((value, index) => {
+      if (value.status === "Cliente em potencial") { // Se o status for igual ao valor "Cliente em potencial", posiciona na primeira coluna
+        return (<tr key={index}>
+          <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td> 
+          <td></td>
+          <td></td>
+        </tr>)
+      }
+      if (value.status === "Dados confirmados") { // Se o status for igual ao valor "Dados confirmados", posiciona na segunda coluna
+        return (<tr key={index}>
+          <td></td>
+          <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
+          <td></td>
+        </tr>)
+      }
+      if (value.status === "Reunião agendada") { // Se o status for igual ao valor "Reunião agendada", posiciona na terceira coluna
+        return (<tr key={index}>
+          <td></td>
+          <td></td>
+          <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
+        </tr>)
+      }
+      return <></>
+    })
+  }
+
   return (
     <div className="container">
       <nav className="nav-bar">
-        <div className="nav-bar-logo-wrap" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
+        <div className="container-nav-bar-logo" onClick={() => window.location.href = "/Leads"}> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
           <img src={egIMG} className="img-elogroup" alt="EloGroup" />
         </div>
-        <div className="nav-bar-txt-welcome-wrap">
+        <div className="container-nav-bar-txt-welcome">
           <h1 className="nav-bar-txt-welcome"> Bem vindo(a) {`${StorageManager.getLoggedUser()}!`} </h1>
         </div>
-        <div className="nav-bar-btn-wrap">
+        <div className="container-nav-bar-btn">
           <button onClick={() => window.location.href = "/newLead"} className="nav-bar-btn">Novo Lead</button>
         </div>
-        <div className="nav-bar-btn-wrap">
+        <div className="container-nav-bar-btn">
           <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
         </div>
       </nav>
@@ -48,30 +76,7 @@ function Leads() {
           </thead>
           <tbody>
             {
-              leadList.map((value, index) => {
-                if (value.status === "Cliente em potencial") {
-                  return (<tr key={index}>
-                    <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
-                    <td></td>
-                    <td></td>
-                  </tr>)
-                }
-                if (value.status === "Dados confirmados") {
-                  return (<tr key={index}>
-                    <td></td>
-                    <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
-                    <td></td>
-                  </tr>)
-                }
-                if (value.status === "Reunião agendada") {
-                  return (<tr key={index}>
-                    <td></td>
-                    <td></td>
-                    <td id={index} draggable={true} onDragEnd={mouseDragHandler}>{value.name}</td>
-                  </tr>)
-                }
-                return <></>
-              })
+              verification()
             }
           </tbody>
         </table>
