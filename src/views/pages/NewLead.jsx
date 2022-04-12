@@ -64,9 +64,8 @@ function NewLead() {
           <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
         </div>
       </nav>
-      <div className="container-login">
+      <div className="container-nav-bar">
         <div className="wrapper-login-white">
-          <div className="container-header-form-img"></div>
           <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
             <h1 className="login-form-title-dark"> Dados de cadastro </h1>
             <div className="container-input-dark">

@@ -4,6 +4,7 @@ import StorageManager from "../../services/StorageManager";
 import egIMG from "./components/elogroup.png";
 
 function Login() {
+  // hooks
   const [login, setLogin] = useState(""); // Estado de login
   const [password, setPassword] = useState(""); // Estado de senha
 
