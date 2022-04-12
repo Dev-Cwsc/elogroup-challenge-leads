@@ -1,3 +1,7 @@
+/**
+ * Componente de verificação responsável por restringir o acesso a páginas restritas no caso de o usuário não estar autenticado.
+ */
+
 import { Outlet } from 'react-router';
 import Login from '../views/pages/Login';
 import StorageManager from "../services/StorageManager";

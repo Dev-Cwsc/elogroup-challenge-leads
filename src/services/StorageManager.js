@@ -1,3 +1,7 @@
+/**
+ * Classe responsável por gerenciar o armazenamento de dados.
+ */
+
 class StorageManager {
     static userExists (login){
         const users = this.getDataLS("users");

@@ -1,3 +1,7 @@
+/**
+ * Componente responsável por estabelecer as rotas do app.
+ */
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthenticationCheck from "./controller/AuthenticationController";
 
