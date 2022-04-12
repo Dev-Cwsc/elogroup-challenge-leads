@@ -17,15 +17,15 @@ function NewLead() {
     }
   );
 
-  const handleCheck = (e) => { // Função para atualizar o estado de checkbox
-    if(e.target.name==="all"){ // Se o checkbox for o "all", marca ou desmarca todas as outras
+  const checkHandler = (e) => {
+    if (e.target.name === "all") { // Se o checkbox marcado for o "all", marca ou desmarca todas as outras
       setAll({
         "rpa": e.target.checked,
         "digitalProduct": e.target.checked,
         "analytics": e.target.checked,
         "bpm": e.target.checked
       });
-    } else { // Se não for o "all", atualiza o estado de acordo com o checkbox clicado
+    } else { // Se não for o "all", atualiza o estado de acordo com o checkbox marcado
       setAll({
         ...checkBoxes,
         [e.target.name]: e.target.checked
@@ -33,12 +33,12 @@ function NewLead() {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Evita que a página seja recarregada
+  const submitHandler = (e) => {
+    e.preventDefault();
     if (leadName === '' || phone === '' || email === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
       return;
-    } else if (StorageManager.setLeadsLS(leadName, phone, email, {...checkBoxes})) { // Se todos os campos estiverem preenchidos, verifica se o lead foi cadastrado
+    } else if (StorageManager.setLeadsLS(leadName, phone, email, { ...checkBoxes })) { // Se todos os campos estiverem preenchidos, tenta cadastrar o lead
       alert("Lead cadastrado com sucesso!"); // Se o lead foi cadastrado, exibe uma mensagem de sucesso
       window.location.href = "/Leads"; // Redireciona para a página de manutenção de leads
     }
@@ -48,6 +48,7 @@ function NewLead() {
     window.location.href = "/"; // Redireciona para a página de login
     StorageManager.clearAuthenticationSS(); // Limpa o armazenamento de autenticação
   }
+
   return (
     <div className="container">
       <nav className="nav-bar">
@@ -58,15 +59,15 @@ function NewLead() {
           <h1 className="nav-bar-txt-welcome"> Cadastrar novo Lead </h1>
         </div>
         <div className="container-nav-bar-btn">
-          <button onClick={() => window.location.href = "/leads"} className="nav-bar-btn">Cancelar</button>
+          <button onClick={() => window.location.href = "/leads"} className="nav-bar-btn">Cancelar</button> {/* Ao clicar no logo, redireciona para a página de manutenção de leads */}
         </div>
         <div className="container-nav-bar-btn">
-          <button onClick={exitHandler} className="nav-bar-btn">Sair</button>
+          <button onClick={exitHandler} className="nav-bar-btn">Sair</button> {/* Função manipuladora que é acionada ao clicar no botão "Sair" */}
         </div>
       </nav>
       <div className="container-nav-bar">
         <div className="wrapper-login-white">
-          <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
+          <form className="login-form" onSubmit={submitHandler}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
             <h1 className="login-form-title-dark"> Dados de cadastro </h1>
             <div className="container-input-dark">
               <input
@@ -75,7 +76,7 @@ function NewLead() {
                 value={leadName}
                 onChange={(e) => setLogin(e.target.value)}
               />
-              <span className="focus-input-dark" data-placeholder="Nome"></span>
+              <span className="focus-input-dark" data-placeholder="Nome *"></span>
             </div>
 
             <div className="container-input-dark">
@@ -85,7 +86,7 @@ function NewLead() {
                 value={phone}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span className="focus-input-dark" data-placeholder="Telefone"></span>
+              <span className="focus-input-dark" data-placeholder="Telefone *"></span>
             </div>
 
             <div className="container-input-dark">
@@ -95,15 +96,20 @@ function NewLead() {
                 value={email}
                 onChange={(e) => setCnfPassword(e.target.value)}
               />
-              <span className="focus-input-dark" data-placeholder="Email"></span>
+              <span className="focus-input-dark" data-placeholder="Email *"></span>
             </div>
-            <span> Oportunidades: </span>
+            <span className="txt1-darker">Oportunidades *</span>
             <div className="wrapper-checkboxes">
-              <input className="checkbox" name="all" onChange={handleCheck} checked={checkBoxes.all} type="checkbox" /> Todos <br />
-              <input className="checkbox" name="rpa" onChange={handleCheck} checked={checkBoxes.rpa} type="checkbox" /> RPA <br />
-              <input className="checkbox" name="digitalProduct" onChange={handleCheck} checked={checkBoxes.digitalProduct} type="checkbox" /> Produto Digital <br />
-              <input className="checkbox" name="analytics" onChange={handleCheck} checked={checkBoxes.analytics} type="checkbox" /> Analytics <br />
-              <input className="checkbox" name="bpm" onChange={handleCheck} checked={checkBoxes.bpm} type="checkbox" /> BPM <br />
+              <input className="checkbox" name="all" onChange={checkHandler} checked={checkBoxes.all} type="checkbox" /> {/* Função manipuladora que é disparada ao marcar qualquer uma das checkboxes */}
+              <label className="checkbox-label">Todas</label>
+              <input className="checkbox" name="rpa" onChange={checkHandler} checked={checkBoxes.rpa} type="checkbox" />
+              <label className="checkbox-label">RPA</label>
+              <input className="checkbox" name="digitalProduct" onChange={checkHandler} checked={checkBoxes.digitalProduct} type="checkbox" />
+              <label className="checkbox-label">Produto Digital</label>
+              <input className="checkbox" name="analytics" onChange={checkHandler} checked={checkBoxes.analytics} type="checkbox" />
+              <label className="checkbox-label">Analytics</label>
+              <input className="checkbox" name="bpm" onChange={checkHandler} checked={checkBoxes.bpm} type="checkbox" />
+              <label className="checkbox-label">BPM</label>
             </div>
             <div className="container-form-btn">
               <button className="form-btn">Cadastrar</button>

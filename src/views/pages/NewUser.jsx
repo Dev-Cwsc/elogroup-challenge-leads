@@ -10,7 +10,7 @@ function Login() {
   const [cnfPassword, setCnfPassword] = useState(""); // Estado de confirmação de senha
   const regexTest = RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"); // Regex para testar a senha
 
-  const handleSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault(); // Evita que a página seja recarregada
     if (login === '' || password === '' || cnfPassword === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
@@ -21,7 +21,7 @@ function Login() {
     } else if (!regexTest.test(password)) { // Se a senha não estiver no padrão
       alert("A senha deve conter pelo menos 8 caracteres, 1 letra, 1 número e 1 caractere especial."); // Exibe uma mensagem de erro
       return;
-    } else if (StorageManager.setUserLS(login, password)) { // Se todos os campos estiverem preenchidos e as senhas forem iguais, salva o usuário no localStorage
+    } else if (StorageManager.setUserLS(login, password)) { // Se todos os requisitos forem atendidos, tenta criar o usuário
       alert('Usuário e senha cadastrados com sucesso!'); // Exibe uma mensagem de sucesso
       setLogin(""); // Limpa os campos
       setPassword("");
@@ -39,8 +39,8 @@ function Login() {
           <div className="container-header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
-          <form className="login-form" onSubmit={handleSubmit}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
-            <h1 className="login-form-title"> Cadastro de novo Usuário </h1>
+          <form className="login-form" onSubmit={submitHandler}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
+            <h1 className="login-form-title"> Cadastro de novo usuário </h1>
             <div className="container-input">
               <input
                 className={login !== "" ? "has-val input" : "input"}
@@ -48,7 +48,7 @@ function Login() {
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
               />
-              <span className="focus-input" data-placeholder="Login"></span>
+              <span className="focus-input" data-placeholder="Login *"></span>
             </div>
 
             <div className="container-input">
@@ -58,7 +58,7 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span className="focus-input" data-placeholder="Senha"></span>
+              <span className="focus-input" data-placeholder="Senha *"></span>
             </div>
 
             <div className="container-input">
@@ -68,7 +68,7 @@ function Login() {
                 value={cnfPassword}
                 onChange={(e) => setCnfPassword(e.target.value)}
               />
-              <span className="focus-input" data-placeholder="Confirme sua senha"></span>
+              <span className="focus-input" data-placeholder="Confirme sua senha *"></span>
             </div>
 
             <div className="container-form-btn">

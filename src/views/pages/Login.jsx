@@ -8,13 +8,15 @@ function Login() {
   const [login, setLogin] = useState(""); // Estado de login
   const [password, setPassword] = useState(""); // Estado de senha
 
-  const handlerLogin = (e) => {
+  const loginHandler = (e) => {
     e.preventDefault();
-    if (login === '' || password === '') {
+    if (login === '' || password === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos.");
       return;
-    } else if(StorageManager.setAuthenticationSS(login, password)) { // Tenta fazer a autenticação do usuário
+    } else if (StorageManager.setAuthenticationSS(login, password)) { // Tenta fazer a autenticação do usuário
       window.location.href = "/Leads"; // Se a autenticação for bem sucedida, redireciona para a página de manutenção de leads
+    } else {
+      alert("Login ou senha inválidos."); // Se a autenticação falhar, exibe uma mensagem de erro
     }
   }
 
@@ -25,7 +27,7 @@ function Login() {
           <div className="container-header-form-img">
             <img src={egIMG} className="img-elogroup" alt="EloGroup" />
           </div>
-          <form className="login-form" onSubmit={handlerLogin}> {/* Função manipuladora que é acionada ao submeter o formulário de login */}
+          <form className="login-form" onSubmit={loginHandler}> {/* Função manipuladora que é acionada ao submeter o formulário de login */}
             <h1 className="login-form-title"> Manutenção de Leads </h1>
             <div className="container-input">
               <input
@@ -34,7 +36,7 @@ function Login() {
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
               />
-              <span className="focus-input" data-placeholder="Login"></span>
+              <span className="focus-input" data-placeholder="Login *"></span>
             </div>
 
             <div className="container-input">
@@ -44,7 +46,7 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span className="focus-input" data-placeholder="Senha"></span>
+              <span className="focus-input" data-placeholder="Senha *"></span>
             </div>
 
             <div className="container-form-btn">

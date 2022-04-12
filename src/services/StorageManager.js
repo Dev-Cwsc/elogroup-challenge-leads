@@ -60,10 +60,8 @@ class StorageManager {
         if (user) { // Se o usuário existir, ele será armazenado no sessionStorage
             sessionStorage.setItem("authenticated", JSON.stringify(login));
             return true; // Retorna true para confirmar que o usuário foi autenticado
-        } else {
-            alert("Usuário ou senha inválidos.");
-            return false; // Retorna false se o usuário não existir no localStorage
         }
+        return false; // Retorna false se o usuário não existir no localStorage
     }
 
     static getAuthenticationSS () {
