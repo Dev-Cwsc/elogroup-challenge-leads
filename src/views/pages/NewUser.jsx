@@ -19,7 +19,7 @@ function Login() {
       alert("As senhas não conferem."); // Se não forem, exibe uma mensagem de erro
       return;
     } else if (!regexTest.test(password)) { // Se a senha não estiver no padrão
-      alert("A senha deve conter pelo menos 8 caracteres, 1 letra, 1 número e 1 caractere especial."); // Exibe uma mensagem de erro
+      alert("A senha deve conter pelo menos 8 caracteres, incluindo caracteres especiais, letras e números."); // Exibe uma mensagem de erro
       return;
     } else if (StorageManager.setUserLS(login, password)) { // Se todos os requisitos forem atendidos, tenta criar o usuário
       alert('Usuário e senha cadastrados com sucesso!'); // Exibe uma mensagem de sucesso
@@ -51,7 +51,7 @@ function Login() {
               <span className="focus-input" data-placeholder="Login *"></span>
             </div>
 
-            <div className="container-input">
+            <div className="container-input-password">
               <input
                 className={password !== "" ? "has-val input" : "input"}
                 type="password"
@@ -59,6 +59,9 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <span className="focus-input" data-placeholder="Senha *"></span>
+            </div>
+            <div className="container-label-password">
+              <label className="txt-label-password">(Pelo menos 8 caracteres, incluindo caracteres especiais, letras e números)</label>
             </div>
 
             <div className="container-input">

@@ -16,7 +16,7 @@ function Login() {
     } else if (StorageManager.setAuthenticationSS(login, password)) { // Tenta fazer a autenticação do usuário
       window.location.href = "/Leads"; // Se a autenticação for bem sucedida, redireciona para a página de manutenção de leads
     } else {
-      alert("Login ou senha inválidos."); // Se a autenticação falhar, exibe uma mensagem de erro
+      alert("Login ou senha incorretos.");
     }
   }
 

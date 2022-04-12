@@ -38,6 +38,9 @@ function NewLead() {
     if (leadName === '' || phone === '' || email === '') { // Verifica se todos os campos estão preenchidos
       alert("Preencha todos os campos."); // Se não estiverem, exibe uma mensagem de erro
       return;
+    } else if (checkBoxes["rpa"] === false && checkBoxes["digitalProduct"] === false && checkBoxes["analytics"] === false && checkBoxes["bpm"] === false) { // Verifica se o usuário marcou pelo menos uma das oportunidades
+      alert("Escolha pelo menos uma das oportunidades."); // Se não marcou nenhuma, exibe uma mensagem de erro
+      return;
     } else if (StorageManager.setLeadsLS(leadName, phone, email, { ...checkBoxes })) { // Se todos os campos estiverem preenchidos, tenta cadastrar o lead
       alert("Lead cadastrado com sucesso!"); // Se o lead foi cadastrado, exibe uma mensagem de sucesso
       window.location.href = "/Leads"; // Redireciona para a página de manutenção de leads
@@ -69,7 +72,7 @@ function NewLead() {
         <div className="wrapper-login-white">
           <form className="login-form" onSubmit={submitHandler}> {/* Função manipuladora que é acionada ao submeter o formulário de cadastro */}
             <h1 className="login-form-title-dark"> Dados de cadastro </h1>
-            <div className="container-input-dark">
+            <div className="container-input">
               <input
                 className={leadName !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="text"
@@ -79,7 +82,7 @@ function NewLead() {
               <span className="focus-input-dark" data-placeholder="Nome *"></span>
             </div>
 
-            <div className="container-input-dark">
+            <div className="container-input">
               <input
                 className={phone !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="phone"
@@ -89,7 +92,7 @@ function NewLead() {
               <span className="focus-input-dark" data-placeholder="Telefone *"></span>
             </div>
 
-            <div className="container-input-dark">
+            <div className="container-input">
               <input
                 className={email !== "" ? "has-val-dark input-dark" : "input-dark"}
                 type="email"

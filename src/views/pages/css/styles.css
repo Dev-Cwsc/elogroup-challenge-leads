@@ -26,10 +26,14 @@ body, html {
     margin-bottom: 37px;
 }
 
-.container-input-dark {
+.container-input-password {
     width: 100%;
     position: relative;
     border-bottom: 2px solid #adadad;
+}
+
+.container-label-password{
+    width: 100%;
     margin-bottom: 37px;
 }
 
@@ -329,6 +333,13 @@ body, html {
 
 .txt1 {
     font-size: 14px;
+    color: #adadad;
+    line-height: 1.5;
+    padding-right: 5px;
+}
+
+.txt-label-password {
+    font-size: 12px;
     color: #adadad;
     line-height: 1.5;
     padding-right: 5px;

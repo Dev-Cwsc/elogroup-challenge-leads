@@ -1,12 +1,17 @@
 class StorageManager {
     static userExists (login){
-        const users = this.getDataLS("users"); // Retorna os usuários cadastrados no localStorage
-        return users.find(object => object.login === login) ? true : false; // Retorna true se encontrar um usuário com o login especificado, false caso contrário
+        const users = this.getDataLS("users");
+        if(users===null){
+            window.alert("Login ou senha incorretos."); // Se não existirem usuários cadastrados no localStorage, o usuário será avisado que o login ou senha estão incorretos
+            return false;
+        } else {
+            return users.find(object => object.login === login) ? true : false; // Retorna true se encontrar um usuário com o login especificado, false caso contrário
+        }
     }
 
-    static getUserLS (login, password) {
+    static getUserLS (login, password) { // Retorna o usuário com o login e senha especificados, ou false caso contrário
         const users = this.getDataLS("users");
-        return users.find(object => object.login === login && object.password === password); // Retorna o usuário com o login e senha especificados, ou false caso contrário
+        return this.userExists(login) ? users.find(object => object.login === login && object.password === password) : false;
     }
     
     static getDataLS (key) {
@@ -24,7 +29,7 @@ class StorageManager {
             }
         }
         users.push({"login": login, "password": password});
-        localStorage.setItem("users", JSON.stringify(users)); // JSON.stringfy converte objeto em string
+        localStorage.setItem("users", JSON.stringify(users)); // JSON.stringfy converte o objeto em string
         return true;
     }
 
@@ -34,7 +39,7 @@ class StorageManager {
             leads = this.getDataLS("leads");
         }
         leads.push({"name": leadName, "phone": phone, "email": email, "oportunities": rpa, digitalProduct, analytics, bpm, "status": "Cliente em potencial"});
-        localStorage.setItem("leads", JSON.stringify(leads)); // JSON.stringfy converte objeto em string
+        localStorage.setItem("leads", JSON.stringify(leads));
         return true;
     }
 
@@ -43,7 +48,7 @@ class StorageManager {
         return leads;
     }
 
-    static updateStateLeadLS (id) {
+    static updateStateLeadLS (id) { // Atualiza o status do lead no localStorage
         let leads;
         if (leads = this.getDataLS("leads")){
             if(leads[id].status==="Cliente em potencial"){
