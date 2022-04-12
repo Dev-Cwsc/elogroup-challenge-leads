@@ -6,7 +6,7 @@ class StorageManager {
     static userExists (login){
         const users = this.getDataLS("users");
         if(users===null){
-            window.alert("Login ou senha incorretos."); // Se não existirem usuários cadastrados no localStorage, o usuário será avisado que o login ou senha estão incorretos
+            window.alert("Ainda não há usuários cadastrados."); // Se não existirem usuários cadastrados no localStorage, o usuário será avisado
             return false;
         } else {
             return users.find(object => object.login === login) ? true : false; // Retorna true se encontrar um usuário com o login especificado, false caso contrário
